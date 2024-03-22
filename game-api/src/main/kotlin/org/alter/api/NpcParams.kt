@@ -1,6 +1,7 @@
 package org.alter.api
 
 import org.alter.game.model.combat.NpcCombatDef
+import org.alter.game.model.combat.SlayerAssignment
 import org.alter.game.model.weightedTableBuilder.TableTypes
 import org.alter.game.model.weightedTableBuilder.itemDrop
 import org.alter.game.model.weightedTableBuilder.tableDrops
@@ -88,6 +89,8 @@ class NpcCombatBuilder {
 
     private var slayerXp = -1.0
 
+    private var slayerAssignment: SlayerAssignment? = null
+
     private val bonuses = Array(BONUS_COUNT) { 0 }
 
     private val speciesSet = enumSetOf<NpcSpecies>()
@@ -150,6 +153,7 @@ class NpcCombatBuilder {
             slayerXp,
             bonuses.toList(),
             speciesSet,
+            slayerAssignment,
             dropTable.toSet()
         )
     }
@@ -347,9 +351,10 @@ class NpcCombatBuilder {
         return this
     }
 
-    fun setSlayerParams(levelReq: Int, xp: Double): NpcCombatBuilder {
+    fun setSlayerParams(levelReq: Int, xp: Double, assignment: SlayerAssignment): NpcCombatBuilder {
         setSlayerRequirement(levelReq)
         setSlayerXp(xp)
+        slayerAssignment = assignment
         return this
     }
 

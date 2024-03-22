@@ -281,6 +281,16 @@ abstract class KotlinPlugin(private val r: PluginRepository, val world: World, v
     }
 
     /**
+     * Invoke [logic] when an [item] is used on a [gg.rsmod.game.model.entity.GameObject]
+     *
+     * @param obj the game object id
+     * @param item the item id
+     */
+    fun on_item_on_obj(obj: Array<Int>, item: Int, lineOfSightDistance: Int = -1, logic: (Plugin).() -> Unit) {
+        obj.forEach { r.bindItemOnObject(it, item, lineOfSightDistance, logic) }
+    }
+
+    /**
      * Invoke [plugin] when [item1] is used on [item2] or vise-versa.
      */
     fun on_item_on_item(item1: Int, item2: Int, plugin: Plugin.() -> Unit) = r.bindItemOnItem(item1, item2, plugin)
@@ -319,7 +329,11 @@ abstract class KotlinPlugin(private val r: PluginRepository, val world: World, v
      * is handled.
      */
     fun set_combat_logic(logic: (Plugin).() -> Unit) = r.bindCombat(logic)
-
+    /**
+     * Set the logic to execute by default when [gg.rsmod.game.model.entity.Pawn.death]
+     * is handled.
+     */
+    fun set_slayer_logic(logic: (Plugin).() -> Unit) = r.bindSlayerLogic(logic)
     /**
      * Set the logic to execute when a player levels a skill.
      */

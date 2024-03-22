@@ -50,6 +50,10 @@ class SkillSet(val maxSkills: Int) {
      * Gets the level based on the xp that [skills].get([skill]) has.
      */
     fun getBaseLevel(skill: Int): Int = getLevelForXp(skills[skill].xp)
+    /**
+     * Gets the level based on the xp that [skills].get([skill]) has.
+     */
+    fun getMaxLevel(skill: Int): Int = getLevelForXp(skills[skill].xp)
 
     fun setXp(skill: Int, xp: Double) {
         get(skill).xp = xp
@@ -70,6 +74,7 @@ class SkillSet(val maxSkills: Int) {
     fun setBaseLevel(skill: Int, level: Int) {
         setBaseXp(skill, getXpForLevel(level))
     }
+
 
     /**
      * Sets the xp of the skill while also setting the current level

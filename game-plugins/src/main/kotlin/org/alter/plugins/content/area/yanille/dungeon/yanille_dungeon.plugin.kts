@@ -7,11 +7,24 @@ package org.alter.plugins.content.area.yanille.dungeon
 
 //Entering Yanille Dungeon by stairs
 on_obj_option(obj = Objs.STAIRCASE_16664, option = "Climb-Down") {
-    player.moveTo(2602, 9479)
+    when (player.tile.regionId) {
+        10804 -> { //legends guild
+            player.moveTo(x = 2727, z = 9774)
+        }
+
+        else -> player.moveTo(2602, 9479)
+    }
 }
 
 on_obj_option(obj = Objs.STAIRCASE_16665, option = "Climb-Up") {
-    player.moveTo(2606, 3079)
+    when (player.tile.regionId) {
+        10904 -> { //legends guild
+            player.moveTo(x = 2723, z = 3375)
+        }
+
+        else -> player.moveTo(2606, 3079)
+    }
+
 }
 
 //Red Key Door

@@ -4,7 +4,7 @@ import org.alter.api.cfg.Items
 import org.alter.plugins.content.skills.crafting.data.Gems
 import org.alter.plugins.content.skills.crafting.data.Spin
 
-val spinningObj = 14889
+val spinningObj = 25824
 
 Gems.values().forEach { gems ->
     on_item_on_item(Items.CHISEL, gems.uncutGem) {

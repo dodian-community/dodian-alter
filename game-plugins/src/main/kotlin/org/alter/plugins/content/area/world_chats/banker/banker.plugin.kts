@@ -24,7 +24,7 @@ suspend fun QueueTask.dialog() {
         4 -> more_bank_slots()
         5 -> {
             chatPlayer("What is this place?")
-            chatNpc("This is a branch of the Bank of Gielinor. We have<br><br>branches in many towns.", animation = 568)
+            chatNpc("This is a branch of the Bank of Dodian. We have<br><br>branches in many towns.", animation = 568)
             chatPlayer("And what do you do?", animation = 554)
             chatNpc("We will look after your items and money for you.<br>Leave your valuables with us if you want to keep them<br>safe.", animation = 569)
         }

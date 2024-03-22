@@ -108,6 +108,7 @@ open class Player(world: World) : Pawn(world) {
 
     val skillSet = SkillSet(maxSkills = world.gameContext.skillCount)
 
+
     /**
      * The options that can be executed on this player
      */

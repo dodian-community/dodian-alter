@@ -23,7 +23,6 @@ val altars = arrayOf(
     Objs.ALTAR_2640,
     Objs.ALTAR_28455,
     Objs.GORILLA_STATUE_4859,
-    Objs.ALTAR_OF_GUTHIX,
     Objs.ALTAR_19145
 )
 

@@ -48,7 +48,8 @@ enum class Food(val item: Int, val heal: Int = 0, val overheal: Boolean = false,
     /**
      * Other.
      */
-    ONION(item = Items.ONION, heal = 1);
+    ONION(item = Items.ONION, heal = 1),
+    CABBAGE(item = Items.CABBAGE, heal = 1);
     companion object {
         val values = enumValues<Food>()
     }

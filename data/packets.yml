@@ -1510,8 +1510,10 @@ client-packets:
         trans: NEGATE
       - name: item
         type: SHORT
+        sign: UNSIGNED
       - name: obj
         type: SHORT
+        sign: UNSIGNED
       - name: z
         type: SHORT
       - name: x

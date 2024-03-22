@@ -231,3 +231,23 @@ val LEVEL_UP_OLD_XP = AttributeKey<Double>()
 val CHANGE_LOGGING = AttributeKey<Boolean>()
 
 var TERMINAL_ARGS = AttributeKey<Array<String>>()
+
+/**
+ * The players current Slayer Master
+ */
+val SLAYER_MASTER = AttributeKey<Int>(persistenceKey = "slayer_master")
+
+/**
+ * The players current SlayerAssignment
+ */
+val SLAYER_ASSIGNMENT = AttributeKey<String>(persistenceKey = "slayer_assignment")
+
+/**
+ * The amount of Slayer monsters left to kill
+ */
+val SLAYER_AMOUNT = AttributeKey<Int>(persistenceKey = "slayer_amount")
+
+/**
+ * The amount of Slayer monsters left to kill
+ */
+val STARTED_SLAYER = AttributeKey<Boolean>(persistenceKey = "started_slayer")

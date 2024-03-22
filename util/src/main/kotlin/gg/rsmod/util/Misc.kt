@@ -81,4 +81,25 @@ object Misc {
         val some = special.isNotEmpty()
         return (if (numeric) "" else if (vowel) "an" else if (some) "some" else "a") + " " + word
     }
+    /**
+     * Formats the string as display name.
+     * @param name The string to format.
+     * @return The formatted name.
+     */
+    fun formatForDisplay(name: String): String {
+        val newName = StringBuilder()
+        var wasSpace = true
+        for (c in name.replace("_".toRegex(), " ").lowercase()) {
+            if (wasSpace) {
+                newName.append(c.uppercase())
+                wasSpace = false
+            } else {
+                newName.append(c)
+            }
+            if (c == ' ') {
+                wasSpace = true
+            }
+        }
+        return newName.toString()
+    }
 }

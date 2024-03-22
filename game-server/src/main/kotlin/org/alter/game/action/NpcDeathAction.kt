@@ -44,6 +44,7 @@ object NpcDeathAction {
         }
         world.plugins.executeNpcPreDeath(npc)
         npc.resetFacePawn()
+        world.plugins.executeSlayerLogic(npc)
 
         if (npc.combatDef.defaultDeathSoundArea) {
             world.spawn(AreaSound(npc.tile, deathSound, npc.combatDef.defaultDeathSoundRadius, npc.combatDef.defaultDeathSoundVolume))

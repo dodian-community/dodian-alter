@@ -1,6 +1,10 @@
 package org.alter.plugins.content.skills.runecrafting
 
+import org.alter.plugins.content.skills.crafting.Spinning
+import org.alter.plugins.content.skills.crafting.data.Spin
+
 private val enterOption = "Enter"
+private val prayOption = "Pray-at"
 
 Altar.values.forEach { altar ->
 
@@ -14,7 +18,7 @@ Altar.values.forEach { altar ->
 
         // Allow using the talisman on the ruins to enter the altar
         altar.talisman?.let { talisman ->
-            on_item_on_obj(obj = ruin, item = talisman) {
+            on_item_on_obj(obj = ruin, item = talisman, lineOfSightDistance = 5) {
                 altar.entrance?.let { player.moveTo(it) }
             }
         }
@@ -25,6 +29,13 @@ Altar.values.forEach { altar ->
                 if (player.getVarbit(altar.varbit) == 1) {
                     altar.entrance?.let { player.moveTo(it) }
                 }
+            }
+        }
+
+        //Cosmic Entrance
+        if (def.options.contains(prayOption)) {
+            on_obj_option(obj = ruin, option = prayOption) {
+                    altar.entrance?.let { player.moveTo(it) }
             }
         }
     }

@@ -30,6 +30,13 @@ class AttributeMap {
     fun remove(key: AttributeKey<*>) {
         attributes.remove(key)
     }
+    fun remove(vararg key: AttributeKey<*>) {
+        key.forEach {
+            if(attributes.containsKey(it)) {
+                attributes.remove(it)
+            }
+        }
+    }
 
     fun has(key: AttributeKey<*>): Boolean = attributes.containsKey(key)
 
@@ -48,4 +55,8 @@ class AttributeMap {
     }
 
     fun toPersistentMap(): Map<String, Any> = attributes.filterKeys { it.persistenceKey != null && !it.temp }.mapKeys { it.key.persistenceKey!! }
+    fun getOrNull(key: AttributeKey<*>): Any? {
+        return attributes[key]
+    }
+
 }

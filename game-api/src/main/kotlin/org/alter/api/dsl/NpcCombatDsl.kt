@@ -10,6 +10,7 @@ import org.alter.api.ext.NPC_MAGIC_DAMAGE_BONUS_INDEX
 import org.alter.api.ext.NPC_RANGED_STRENGTH_BONUS_INDEX
 import org.alter.api.ext.NPC_STRENGTH_BONUS_INDEX
 import org.alter.api.ext.enumSetOf
+import org.alter.game.model.combat.SlayerAssignment
 
 fun KotlinPlugin.set_combat_def(npc: Int, init: NpcCombatDsl.Builder.() -> Unit) {
     val builder = NpcCombatDsl.Builder()
@@ -116,15 +117,13 @@ object NpcCombatDsl {
             combatBuilder.setDeathSoundVolume(builder.deathVolume)
         }
 
-        fun slayerData(init: SlayerBuilder.() -> Unit) {
-            val builder = SlayerBuilder()
-            init(builder)
-            /**
-             * @TODO Forgot if it's true or not but => Theres some monsters that can only be attacked on task.
-             */
-            combatBuilder.setSlayerParams(builder.levelRequirement, builder.xp)
-        }
+    fun slayer(init: SlayerBuilder.() -> Unit) {
+        val builder = SlayerBuilder()
+        init(builder)
+
+        combatBuilder.setSlayerParams(builder.levelRequirement, builder.xp, builder.assignment!!)
     }
+}
 
     @CombatDslMarker
     class ConfigBuilder {
@@ -152,6 +151,12 @@ object NpcCombatDsl {
          * meaning the npc will always inflict venom on damage.
          */
         var venomChance = -1.0
+
+        /**
+         * The spell an NPC will use if one is set
+         * Note: this is used to signify the NPCs default attack style (magic)
+         */
+        var spell = -1
 
         /**
          * @TODO
@@ -340,6 +345,11 @@ object NpcCombatDsl {
          * The Slayer xp gained from killing the npc.
          */
         var xp = 0.0
+
+        /**
+         * The type of Slayer Assignment
+         */
+        var assignment: SlayerAssignment? = null
     }
 
     @CombatDslMarker

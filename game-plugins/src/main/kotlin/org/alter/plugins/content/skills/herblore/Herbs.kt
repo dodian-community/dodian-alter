@@ -43,7 +43,7 @@ class Herb(val dirty: Int, val clean: Int, val unfinished: Int, val minCleanLeve
 }
 
 enum class Herbs(val herb: Herb) {
-    GUAM(Herb(Items.GRIMY_GUAM_LEAF, Items.GUAM_LEAF, Items.GUAM_POTION_UNF, 3, 2.5, 3)),
+    GUAM(Herb(Items.GRIMY_GUAM_LEAF, Items.GUAM_LEAF, Items.GUAM_POTION_UNF, 1, 2.5, 1)),
     ROGUES_PURSE(Herb(Items.GRIMY_ROGUES_PURSE, Items.ROGUES_PURSE, Items.UNFINISHED_POTION_4840, 3, 2.5, 8)),
     SNAKE_WEED(Herb(Items.GRIMY_SNAKE_WEED, Items.SNAKE_WEED, Items.SNAKEWEED_MIXTURE, 3, 2.5, 45)),
     MARRENTILL(Herb(Items.GRIMY_MARRENTILL, Items.MARRENTILL, Items.MARRENTILL_POTION_UNF, 5, 3.8, 5)),
